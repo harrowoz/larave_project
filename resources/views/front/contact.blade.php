@@ -16,14 +16,14 @@
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/jquery-ui.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/magnific-popup.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('front-assets/css/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
 </head>
 
 <body>
