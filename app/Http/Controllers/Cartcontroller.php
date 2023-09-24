@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Cartcontroller extends Controller
+class CartController extends Controller
 {
     public function cart(){
         return view('front.cart');
@@ -12,4 +12,8 @@ class Cartcontroller extends Controller
     public function checkout(){
         return view('front.checkout');
     }       
+<<<<<<< Updated upstream
+=======
+      
+>>>>>>> Stashed changes
 }
