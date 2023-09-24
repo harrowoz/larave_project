@@ -20,3 +20,5 @@ route::get('/',[FrontController::class,'index'])->name('front.home');
 route::get('/shop',[ShopController::class,'index'])->name('front.shop');
 route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
+route::get('/contact',[CartController::class,'contact'])->name('front.contact');
+route::get('/product_details',[CartController::class,'product_details'])->name('front.product_details');
