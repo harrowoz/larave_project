@@ -134,6 +134,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__left product__thumb nice-scroll">
                             <a class="pt active" href="#product-1">
+<<<<<<< Updated upstream
                                 <img src="{{asset('front-assets/img/product/details/thumb-1.jpg')}}" alt="">
                             </a>
                             <a class="pt" href="#product-2">
@@ -144,6 +145,18 @@
                             </a>
                             <a class="pt" href="#product-4">
                                 <img src="{{asset('front-assets/img/product/details/thumb-4.jpg')}}" alt="">
+=======
+                                <img src="{{asset('front-assets/img/product/details/thumb-1.jpg')}}" alt=""></a>
+                            </a>
+                            <a class="pt" href="#product-2">
+                                <img src="{{asset('front-assets/img/product/details/thumb-2.jpg')}}" alt=""></a>
+                            </a>
+                            <a class="pt" href="#product-3">
+                                <img src="{{asset('front-assets/img/product/details/thumb-3.jpg')}}" alt=""></a>
+                            </a>
+                            <a class="pt" href="#product-4">
+                                <img src="{{asset('front-assets/img/product/details/thumb-4.jpg')}}" alt=""></a>
+>>>>>>> Stashed changes
                             </a>
                         </div>
                         <div class="product__details__slider__content">
