@@ -67,19 +67,19 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="#">Women’s</a></li>
-                            <li><a href="#">Men’s</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li class="active"><a href="./">Home</a></li>
+                            <li><a href="./shop">Women’s</a></li>
+                            <li><a href="./shop">Men’s</a></li>
+                            <li><a href="./shop">Shop</a></li>
+                            <li><a href="./contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a href="#">Register</a>
+                            <a href="./login">Login</a>
+                            <a href="./register">Register</a>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
