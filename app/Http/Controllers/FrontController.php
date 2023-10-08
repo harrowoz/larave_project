@@ -10,7 +10,7 @@ class FrontController extends Controller
     public function index(){
         $products=Product::where('is_featured','yes')->where('status',1)->get();
         $data['featuredProducts']=$products;
-        $newProducts=Product::where('gender',['male','female'])->where('status',1)->take(8)->get();
+        $newProducts=Product::orderBy('id','ASC')->where('status',1)->take(8)->get();
         $data['newProducts']=$newProducts;
         return view('front.home',$data);
     }

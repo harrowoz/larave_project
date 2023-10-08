@@ -145,7 +145,7 @@
         @if ($newProducts->isNotEmpty())
                             @foreach($newProducts as $product)
                             @php
-                                $productImage = $product ->product_images->first()
+                                $productImage = $product ->product_images;
                             @endphp
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
@@ -192,7 +192,7 @@
         @if ($featuredProducts->isNotEmpty())
                             @foreach($featuredProducts as $product)
                             @php
-                                $productImage = $product ->product_images->first()
+                                $productImage = $product ->product_images;
                             @endphp
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">

@@ -24,6 +24,6 @@ route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 route::get('/wishlist',[WishController::class,'wishlist'])->name('front.wishlist');
 route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
 route::get('/contact',[ContactController::class,'contact'])->name('front.contact');
-route::get('/product_details',[ShopController::class,'product_details'])->name('front.product_details');
+route::get('/product',[ShopController::class,'product_details'])->name('front.product_details');
 route::get('/login',[FrontController::class,'login'])->name('front.login');
 route::get('/register',[FrontController::class,'register'])->name('front.register');
