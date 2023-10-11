@@ -68,9 +68,9 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./">Home</a></li>
-                            <li><a href="./shop">Women’s</a></li>
-                            <li><a href="./shop">Men’s</a></li>
-                            <li><a href="./shop">Shop</a></li>
+                            <li><a href="{{ route("front.shop",'man')}}">man</a></li>
+                            <li><a href="{{ route("front.shop",'women')}}">women</a></li>
+                            <li><a href="{{ route("front.shop")}}">Shop</a></li>
                             <li><a href="./contact">Contact</a></li>
                         </ul>
                     </nav>
@@ -130,7 +130,7 @@
                                 <div class="accordion" id="accordionExample">   
                                     <div class="card">
                                         @foreach($categories as $category)
-                                         <button type="button" class="list-group-item list-group-item-action">{{$category->name}}</button>
+                                         <a href="{{ route("front.shop",[$category->type,$category->slug])}}" > <button type="button" class="list-group-item list-group-item-action">{{$category->name}}</button></a>
                                          @endforeach
                                     </div>
                                 </div>
@@ -152,55 +152,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">Filter</a>
+                            <a href="">Filter</a>
                         </div>
-                        <div class="sidebar__sizes">
-                            <div class="section-title">
-                                <h4>Shop by size</h4>
-                            </div>
-                            <div class="size__list">
-                                <label for="xxs">
-                                    xxs
-                                    <input type="checkbox" id="xxs">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="xs">
-                                    xs
-                                    <input type="checkbox" id="xs">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="xss">
-                                    xs-s
-                                    <input type="checkbox" id="xss">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="s">
-                                    s
-                                    <input type="checkbox" id="s">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="m">
-                                    m
-                                    <input type="checkbox" id="m">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="ml">
-                                    m-l
-                                    <input type="checkbox" id="ml">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="l">
-                                    l
-                                    <input type="checkbox" id="l">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="xl">
-                                    xl
-                                    <input type="checkbox" id="xl">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 

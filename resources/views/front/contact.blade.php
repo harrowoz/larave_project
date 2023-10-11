@@ -69,9 +69,9 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./">Home</a></li>
-                            <li><a href="./shop">Women’s</a></li>
-                            <li><a href="./shop">Men’s</a></li>
-                            <li><a href="./shop">Shop</a></li>
+                            <li><a href="{{ route("front.shop",'man')}}">man</a></li>
+                            <li><a href="{{ route("front.shop",'women')}}">women</a></li>
+                            <li><a href="{{ route("front.shop")}}">Shop</a></li>
                             <li><a href="./contact">Contact</a></li>
                         </ul>
                     </nav>
