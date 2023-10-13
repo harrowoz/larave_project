@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('phone', 100)->unique();
             $table->string('password', 100);
-            $table->string('role', 50)->default('customer');
+            $table->enum('role',['1','0'])->default(1);//1 la user,0 la admin
             $table->string('address', 255)->nullable();
             $table->tinyInteger('status')->default(1)->comment('1 là bình thường, 0 khóa acc');
             $table->date('created_at')->default(now());
