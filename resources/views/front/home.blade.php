@@ -49,8 +49,13 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
+        @if(Auth::check())
+            <a href="./">{{Auth::user()->name}}</a>
+            <a href="./">Logout</a>
+        @else
             <a href="./login">Login</a>
             <a href="./register">Register</a>
+        @endif
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -78,8 +83,13 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
+                            @if(Auth::check())
+                            <a href="./">{{Auth::user()->name}}</a>
+                            <a href="{{route('logout')}}">Logout</a>
+                        @else
                             <a href="./login">Login</a>
                             <a href="./register">Register</a>
+                        @endif
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>

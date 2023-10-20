@@ -118,7 +118,8 @@
     <!-- Login Begin -->
     <section class="checkout spad">
         <div class="container">
-            <form action="#" class="checkout__form">
+            <form action="{{ route('postLogin') }}" method="POST" class="checkout__form">
+                @csrf
                 <div class="row">
                 <div class="col-sm-3"></div>
 
@@ -126,16 +127,27 @@
                     <form>
                     <div class="text-center mb-3">
                           <h5>Sign in here:</h5>
+                          @if ($message = Session::get('error'))
+
+                        <div class="alert alert-danger alert-block">
+
+	                        <button type="button" class="close" data-dismiss="alert">×</button>	
+
+                         <strong>{{ $message }}</strong>
+
+                </div>
+
+            @endif
                           </div>
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                              <input type="email" id="form2Example1" class="form-control" />
+                              <input type="email" id="form2Example1" class="form-control" name="email"/>
                               <label class="form-label" for="form2Example1">Email address</label>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                              <input type="password" id="form2Example2" class="form-control" />
+                              <input type="password" id="form2Example2" class="form-control" name="password"/>
                               <label class="form-label" for="form2Example2">Password</label>
                             </div>
 
@@ -156,10 +168,10 @@
                             </div>
 
                             <!-- Submit button -->
-                            <button type="button" class="btn btn-danger btn-block mb-4">Sign in</button>
+                            <button type="submit" class="btn btn-danger btn-block mb-4">Sign in</button>
                             <!-- Register buttons -->
                             <div class="text-center">
-                              <p>Not a member? <a href="#!">Register</a></p>
+                              <p>Not a member? <a href="register">Register</a></p>
                             </div>
                           </form>
                         </div>
