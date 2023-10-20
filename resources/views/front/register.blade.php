@@ -118,67 +118,51 @@
     <!-- Register Begin -->
     <section class="checkout spad">
         <div class="container">
-            <form action="#" class="checkout__form">
+            <form action="{{ route('postRegister') }}" method="POST" class="checkout__form">
+                @csrf
                 <div class="row">
                     <div class="col-lg-12">
                         <h5>Register here</h5>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
-                                    <p>First Name <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Last Name <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Country <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Town/City <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="checkout__form__input">
-                                    <p>Address <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Postcode/Zip <span>*</span></p>
-                                    <input type="text">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Phone <span>*</span></p>
-                                    <input type="text">
+                                    <p> Name <span>*</span></p>
+                                    <input type="text" id="name" name="name">
                                 </div>
                             </div>
                             <div class="ccol-lg-6 col-md-6 col-sm-6">
                             <div class="checkout__form__input">
                                     <p>Email <span>*</span></p>
+                                    <input type="email" id="email" name="email">
+                                </div>
+                                </div>
+                            <div class="ccol-lg-6 col-md-6 col-sm-6">
+                              <div class="checkout__form__input">
+                                    <p>Password <span>*</span></p>
+                                    <input type="text" id="password" name="password">
+                              </div>
+                              </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <p>Confirm Password <span>*</span></p>
                                     <input type="text">
+                                </div>
+                            </div>
+                            <div class="ccol-lg-6 col-md-6 col-sm-6">
+                            <div class="checkout__form__input">
+                                    <p>Address <span>*</span></p>
+                                    <input type="text" id="address" name="address">
                                 </div>
                                 </div>
                                 <div class="ccol-lg-6 col-md-6 col-sm-6">
                               <div class="checkout__form__input">
-                                    <p>Account password <span>*</span></p>
-                                    <input type="text">
+                                    <p>Phone <span>*</span></p>
+                                    <input type="number" id="phone" name="phone">
                               </div>
                               </div>
                             </div>
-                            <a href="#" class="primary-btn">Register</a>
+                            <button type="submit" class="primary-btn">Register</button>
+
                             <div class="col-lg-12">
                                 
                             </div>

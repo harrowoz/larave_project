@@ -9,7 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -20,8 +20,15 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        
+        // Now, outside of the 'create' closure, add the additional columns
+        Schema::table('users', function (Blueprint $table) {
+            $table->tinyInteger('level')->after('password')->default(0);
+            $table->tinyInteger('status')->after('level')->default(0);
+        });
     }
-
+    
+    
     /**
      * Reverse the migrations.
      */
