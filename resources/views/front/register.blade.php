@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{asset('front-assets/css/magnific-popup.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/ion.rangeSlider.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
 </head>
 
@@ -37,20 +38,18 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="./wishlist"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-            <li><a href="./cart"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
+            <li><a href="{{route("front.wishlist")}}"><span class="icon_heart_alt"></span>
+                            </a></li>
+                            <li><a href="{{route("front.cart")}}"><span class="icon_bag_alt"></span>
+                            </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./"><img src="{{asset('front-assets/img/logo.png')}}" alt=""></a>
+            <a href="{{ route("front.home")}}"><img src="{{asset('front-assets/img/logo.png')}}" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="./login">Login</a>
-            <a href="./register">Register</a>
+        <a href="{{route("front.login")}}">Login</a>
+                            <a href="{{route("front.register")}}">Register</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -67,27 +66,25 @@
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./">Home</a></li>
+                        <li class="active"><a href="{{ route("front.home")}}">Home</a></li>
                             <li><a href="{{ route("front.shop",'man')}}">man</a></li>
                             <li><a href="{{ route("front.shop",'women')}}">women</a></li>
                             <li><a href="{{ route("front.shop")}}">Shop</a></li>
-                            <li><a href="./contact">Contact</a></li>
+                            <li><a href="{{ route("front.contact")}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./login">Login</a>
-                            <a href="./register">Register</a>
+                            <a href="{{route("front.login")}}">Login</a>
+                            <a href="{{route("front.register")}}">Register</a>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./wishlist"><span class="icon_heart_alt"></span>
-                                <div class="tip">2</div>
+                            <li><a href="{{route("front.wishlist")}}"><span class="icon_heart_alt"></span>
                             </a></li>
-                            <li><a href="./cart"><span class="icon_bag_alt"></span>
-                                <div class="tip">2</div>
+                            <li><a href="{{route("front.cart")}}"><span class="icon_bag_alt"></span>
                             </a></li>
                         </ul>
                     </div>
@@ -100,20 +97,7 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>Register</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
+   
 
     <!-- Register Begin -->
     <section class="checkout spad">
@@ -258,7 +242,7 @@
         <!-- Search End -->
 
         <!-- Js Plugins -->
-        <script src="{{asset('front-assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('front-assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('front-assets/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{asset('front-assets/js/jquery-ui.min.js')}}"></script>
@@ -267,6 +251,7 @@
     <script src="{{asset('front-assets/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('front-assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('front-assets/js/jquery.nicescroll.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/ion.rangeSlider.min.js')}}"></script>
     <script src="{{asset('front-assets/js/main.js')}}"></script>
     </body>
 

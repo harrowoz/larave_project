@@ -16,14 +16,15 @@
     rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet"  href="{{asset('front-assets/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/jquery-ui.min.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/magnific-popup.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet"  href="{{asset('front-assets/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/elegant-icons.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/jquery-ui.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/ion.rangeSlider.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
 </head>
 
 <body>
@@ -38,20 +39,18 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="./wishlist"><span class="icon_heart_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
-            <li><a href="./cart"><span class="icon_bag_alt"></span>
-                <div class="tip">2</div>
-            </a></li>
+            <li><a href="{{route("front.wishlist")}}"><span class="icon_heart_alt"></span>
+                            </a></li>
+                            <li><a href="{{route("front.cart")}}"><span class="icon_bag_alt"></span>
+                            </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="./"><img src="{{asset('front-assets/img/logo.png')}}" alt=""></a>
+            <a href="{{ route("front.home")}}"><img src="{{asset('front-assets/img/logo.png')}}" alt=""></a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
-            <a href="./login">Login</a>
-            <a href="./register">Register</a>
+        <a href="{{route("front.login")}}">Login</a>
+                            <a href="{{route("front.register")}}">Register</a>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -62,33 +61,36 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./"><img src="{{asset('front-assets/img/logo.png')}}" alt=""></a>
+                        <a href="{{ route("front.home")}}"><img src="{{asset('front-assets/img/logo.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./">Home</a></li>
+                        <li class="active"><a href="{{ route("front.home")}}">Home</a></li>
                             <li><a href="{{ route("front.shop",'man')}}">man</a></li>
                             <li><a href="{{ route("front.shop",'women')}}">women</a></li>
                             <li><a href="{{ route("front.shop")}}">Shop</a></li>
-                            <li><a href="./contact">Contact</a></li>
+                            <li><a href="{{ route("front.contact")}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="./login">Login</a>
-                            <a href="./register">Register</a>
+                        @if(Auth::check())
+                            <a href="./">{{Auth::user()->name}}</a>
+                            <a href="{{route("front.login")}}">Logout</a>
+                        @else
+                            <a href="{{route("front.login")}}">Login</a>
+                            <a href="{{route("front.register")}}">Register</a>
+                        @endif
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="./wishlist"><span class="icon_heart_alt"></span>
-                                <div class="tip">2</div>
+                            <li><a href="{{route("front.wishlist")}}"><span class="icon_heart_alt"></span>
                             </a></li>
-                            <li><a href="./cart"><span class="icon_bag_alt"></span>
-                                <div class="tip">2</div>
+                            <li><a href="{{route("front.cart")}}"><span class="icon_bag_alt"></span>
                             </a></li>
                         </ul>
                     </div>
@@ -100,23 +102,7 @@
         </div>
     </header>
     <!-- Header Section End -->
-
-    <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="#">Women’s </a>
-                        <span>Essential structured blazer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
+    
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container">
@@ -124,19 +110,25 @@
                 <div class="col-lg-6">
                     <div class="product__details__pic">
                         <div class="product__details__slider__content">
-                            <div class="product__details__pic__slider owl-carousel">
-                                <img data-hash="product-1" class="product__big__img" src="{{asset('front-assets/img/product/details/product-1.jpg')}}" alt="">
-                                <img data-hash="product-2" class="product__big__img" src="{{asset('front-assets/img/product/details/product-3.jpg')}}" alt="">
-                                <img data-hash="product-3" class="product__big__img" src="{{asset('front-assets/img/product/details/product-2.jpg')}}" alt="">
-                                <img data-hash="product-4" class="product__big__img" src="{{asset('front-assets/img/product/details/product-4.jpg')}}" alt="">
+                           
+                            <div class="product__details__pic__slider owl-carousel ">
+                            @if($product->product_images)
+                            @foreach($product->product_images as $key =>$productImages)
+                                <img data-hash="product-1" class="product__big__img {{ ($key==0)? 'active':''}}" src="{{asset('front-assets/img/product/details/product-1.jpg')}}" alt="">
+                                @endforeach
+                            @endif
                             </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <h3>Essential structured blazer <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3>
-                        <div class="product__details__price">$ 75.0 <span>$ 83.0</span></div>
+                        <h3>{{$product->title}}</h3>
+                        <div class="product__details__price">$ {{$product->price}}
+                                    @if($product->compare_price > 0)
+                                    <span>$ {{$product->compare_price}}</span>
+                                    @endif</div>
                         <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
                         magni lores eos qui ratione voluptatem sequi nesciunt.</p>
                         <div class="product__details__button">
@@ -153,16 +145,6 @@
                         </div>
                         <div class="product__details__widget">
                             <ul>
-                                <li>
-                                    <span>Availability:</span>
-                                    <div class="stock__checkbox">
-                                        <label for="stockin">
-                                            In Stock
-                                            <input type="checkbox" id="stockin">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </li>
                                 <li>
                                     <span>Available size:</span>
                                     <div class="size__btn">
@@ -192,39 +174,14 @@
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Specification</a>
+                                <a class="nav-link active" data-toggle="tab" href="#tabs" role="tab">Description</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <h6>Description</h6>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                consequat massa quis enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                quis, sem.</p>
+                            <div class="tab-pane active" id="tabs" role="tabpanel">
+                                <p>{!! $product->description!!}</p>
                             </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <h6>Specification</h6>
-                                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed
-                                    quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt loret.
-                                    Neque porro lorem quisquam est, qui dolorem ipsum quia dolor si. Nemo enim ipsam
-                                    voluptatem quia voluptas sit aspernatur aut odit aut loret fugit, sed quia ipsu
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Nulla
-                                consequat massa quis enim.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
-                                quis, sem.</p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -480,6 +437,7 @@
     <script src="{{asset('front-assets/js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('front-assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('front-assets/js/jquery.nicescroll.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/ion.rangeSlider.min.js')}}"></script>
     <script src="{{asset('front-assets/js/main.js')}}"></script>
 </body>
 

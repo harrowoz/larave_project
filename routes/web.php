@@ -25,10 +25,10 @@ route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 route::get('/wishlist',[WishController::class,'wishlist'])->name('front.wishlist');
 route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
 route::get('/contact',[ContactController::class,'contact'])->name('front.contact');
-route::get('/product',[ShopController::class,'product'])->name('front.product');
+route::get('/product/{slug}',[ShopController::class,'product'])->name('front.product');
 
-route::get('/login',[UserController::class,'login'])->name('login');
+route::get('/login',[UserController::class,'login'])->name('front.login');
 route::post('/login',[UserController::class,'postLogin'])->name('postLogin');
-route::get('/register',[UserController::class,'register'])->name('register');
+route::get('/register',[UserController::class,'register'])->name('front.register');
 Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
 route::get('/logout',[UserController::class,'logout'])->name('logout');
