@@ -33,7 +33,10 @@ class ShopController extends Controller
         }
 
         $products= $products->orderBy('id','DESC');
-        $products=$products->paginate(9);
+        $products=$products->paginate(9)->appends([
+            'price_max' => $request->get('price_max'),
+            'price_min' =>$request->get('price_min'),
+        ]);
 
         $data['categories']=$categories;
         $data['products']=$products;
@@ -42,21 +45,14 @@ class ShopController extends Controller
        
         return view('front.shop',$data);
     }
-    public function product($slug){
-
+    public function product($slug){  
         $product=Product::where('slug',$slug)->with('product_images')->first();
-        // if(Product::where('slug',$slug)->exists()){
-        //     $data['product']=$product;
-        //     dd($product);
-        // }else{
-        //     abort(404);
-        // }
         if($product==null){
             abort(404);
         }
+        $rproducts=Product::where('category_id',$product->category_id)->inRandomOrder()->limit(4)->get();  
         $data['product']=$product;
+        $data['rproducts']=$rproducts;
         return view('front.product',$data);
-        
     } 
-    
 }

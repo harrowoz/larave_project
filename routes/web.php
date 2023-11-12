@@ -25,6 +25,7 @@ route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 route::get('/wishlist',[WishController::class,'wishlist'])->name('front.wishlist');
 route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
 route::get('/contact',[ContactController::class,'contact'])->name('front.contact');
+route::post('/contact',[ContactController::class,'sendContact'])->name('sendContact');
 route::get('/product/{slug}',[ShopController::class,'product'])->name('front.product');
 
 route::get('/login',[UserController::class,'login'])->name('front.login');

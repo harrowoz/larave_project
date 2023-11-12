@@ -141,7 +141,7 @@
                                 <div class="ccol-lg-6 col-md-6 col-sm-6">
                               <div class="checkout__form__input">
                                     <p>Phone <span>*</span></p>
-                                    <input type="number" id="phone" name="phone">
+                                    <input type="text" id="phone" name="phone">
                               </div>
                               </div>
                             </div>

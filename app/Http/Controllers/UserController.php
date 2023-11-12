@@ -19,13 +19,12 @@ class UserController extends Controller
     {
         
         $request->merge(['password' => Hash::make($request->password)]);
-       // dd($request->all());
         try {
             User::create($request->all());
         } catch (\Throwable $th) {
             dd($th);
         }
-        return redirect()->route('login');
+        return redirect()->route('front.login');
 
     }
     public function postLogin(Request $request)

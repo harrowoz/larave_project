@@ -8,7 +8,7 @@ use App\Models\Product;
 class FrontController extends Controller
 {
     public function index(){
-        $products=Product::where('is_featured','yes')->where('status',1)->get();
+        $products=Product::where('is_featured','yes')->where('status',1)->inRandomOrder()->take(8)->get();
         $data['featuredProducts']=$products;
         $newProducts=Product::orderBy('id','ASC')->where('status',1)->take(8)->get();
         $data['newProducts']=$newProducts;
