@@ -26,14 +26,10 @@
                             <div class="section-title">
                                 <h4>Shop by price</h4>
                             </div>
-                            <div class="sidebar__filter">
-                            <div class="section-title">
-                                <h4>Shop by price</h4>
-                            </div>
                             <div class="filter-range-wrap">
                             <input type="text" class="js-range-slider" name="my_range" value="" />  
                             </div>
-                        </div>
+                        
                         </div>
                         
                     </div>
