@@ -1,3 +1,4 @@
+
 @extends('front.layouts.master')
 @section('main-content')
 
@@ -141,6 +142,5 @@
         <!-- Checkout Section End -->
 
         <!-- Instagram Begin -->
-   
-   
     @endsection
+

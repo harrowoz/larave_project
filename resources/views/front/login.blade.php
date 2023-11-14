@@ -1,7 +1,9 @@
+
 @extends('front.layouts.master')
 @section('main-content')
 <!-- Login Begin -->
 <section class="checkout spad">
+
         <div class="container">
             <form action="{{ route('postLogin') }}" method="POST" class="checkout__form">
                 @csrf
@@ -69,3 +71,4 @@
 
         @endsection
     
+

@@ -1,5 +1,7 @@
+
 @extends('front.layouts.master')
 @section('main-content')
+
     <!-- Register Begin -->
     <section class="checkout spad">
         <div class="container">
@@ -58,4 +60,6 @@
             </div>
         </section>
         <!-- Register End -->
+
         @endsection
+

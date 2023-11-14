@@ -1,7 +1,9 @@
+
 @extends('front.layouts.master')
 @section('main-content')
 <!-- Categories Section Begin -->
 <section class="categories">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
@@ -124,5 +126,6 @@
 <!-- Trend Section End -->
 
 <!-- Services Section Begin -->
+
 
 @endsection

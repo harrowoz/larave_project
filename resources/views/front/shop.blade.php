@@ -1,5 +1,7 @@
+
 @extends('front.layouts.master')
 @section('main-content')
+
     <!-- Shop Section Begin -->
     <section class="shop spad">
         <div class="container">
@@ -28,10 +30,11 @@
                             </div>
                             <div class="filter-range-wrap">
                             <input type="text" class="js-range-slider" name="my_range" value="" />  
+
                             </div>
                         
+
                         </div>
-                        
                     </div>
                 </div>
 
@@ -94,6 +97,7 @@
     });
 
 
+
     slider.on("change", function () {
         var $inp = $(this);
         var from = $inp.data("from");   // get data from attribute
@@ -107,3 +111,4 @@
     });
 </script>
     @endsection
+

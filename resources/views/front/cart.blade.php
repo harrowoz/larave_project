@@ -1,3 +1,4 @@
+
 @extends('front.layouts.master')
 @section('main-content')
 <!-- Shop Cart Section Begin -->
@@ -7,10 +8,6 @@
                 <div class="col-md-12">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {!!Session::get('success')!!} 
-                    </div>
-                </div>
-            @endif
-
             @if(Session::has('error'))
                 <div class="col-md-12">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -136,7 +133,6 @@ $('.add').click(function(){
           updateCart(rowId,newQty)
       }        
   });
-
   function updateCart(rowId,qty){
     $.ajax({
         url:'{{route("front.updateCart")}}',
@@ -165,3 +161,4 @@ $('.add').click(function(){
   }
 </script>
     @endsection
+

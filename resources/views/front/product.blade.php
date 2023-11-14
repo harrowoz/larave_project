@@ -1,7 +1,9 @@
+
 @extends('front.layouts.master')
 @section('main-content')
    <!-- Product Details Section Begin -->
    <section class="product-details spad">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -26,7 +28,9 @@
                                     @if($product->compare_price > 0)
                                     <span>$ {{$product->compare_price}}</span>
                                     @endif</div>
+
                         <p>{{$product->description}}</p>
+
                         <div class="product__details__button">
                             <div class="quantity">
                                 <span>Quantity: {{$product->qty}}</span>
@@ -77,7 +81,9 @@
                             @endif
                             <ul class="product__hover">
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+
                                 <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
+
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -94,7 +100,9 @@
         </div>
     </section>
     <!-- Product Details Section End -->
+
     @endsection
     @section('customJs')
     @endsection
     
+

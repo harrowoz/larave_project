@@ -1,3 +1,4 @@
+
 @extends('front.layouts.master')
 @section('main-content')
     <!-- Breadcrumb Begin -->
@@ -14,6 +15,7 @@
         </div>
     </div>
     <!-- Breadcrumb End -->
+
 
     <!-- Shop Cart Section Begin -->
     <section class="shop-cart spad">
@@ -104,4 +106,6 @@
                 </div>
             </div>
     </section>
+
     @endsection
+
