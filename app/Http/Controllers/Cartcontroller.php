@@ -28,7 +28,7 @@ class CartController extends Controller
     if($productAlreadyExist == false){
         Cart::add($product->id, $product->title,1, $product->price, ['productImage'=>(!empty($product->product_images))?$product->product_images->first() : '']);
         $status=true;
-        $message = '<strong>'.$product->title.'</strong> added in your cart successfully';
+        $message = $product->title.' added in your cart successfully';
         session()->flash('success',$message);
     }else{
         $status=false;
@@ -37,7 +37,7 @@ class CartController extends Controller
     }else {
         Cart::add ($product->id, $product->title,1, $product->price, ['productImage'=>(!empty($product->product_images))?$product->product_images->first() : '']);
         $status = true;
-        $message = '<strong>'.$product->title.'</strong> added in your cart successfully';
+        $message = $product->title.' added in your cart successfully';
         session()->flash('success',$message);
     }
     return response()->json([
