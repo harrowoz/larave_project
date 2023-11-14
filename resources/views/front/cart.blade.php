@@ -114,6 +114,7 @@
     @endsection
     @section('customJs')
     <script>
+        
 $('.add').click(function(){
       var qtyElement = $(this).parent().prev(); // Qty Input
       var qtyValue = parseInt(qtyElement.val());

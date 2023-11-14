@@ -26,8 +26,7 @@
                                     @if($product->compare_price > 0)
                                     <span>$ {{$product->compare_price}}</span>
                                     @endif</div>
-                        <p>Nemo enim ipsam voluptatem quia aspernatur aut odit aut loret fugit, sed quia consequuntur
-                        magni lores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <p>{{$product->description}}</p>
                         <div class="product__details__button">
                             <div class="quantity">
                                 <span>Quantity: {{$product->qty}}</span>
@@ -78,7 +77,7 @@
                             @endif
                             <ul class="product__hover">
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -95,5 +94,7 @@
         </div>
     </section>
     <!-- Product Details Section End -->
+    @endsection
+    @section('customJs')
     @endsection
     

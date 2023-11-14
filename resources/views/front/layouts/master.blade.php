@@ -161,7 +161,7 @@
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
-    function addToCart(id){
+function addToCart(id){
         $.ajax({
             url:'{{route("front.addToCart")}}',
             type:'post',
