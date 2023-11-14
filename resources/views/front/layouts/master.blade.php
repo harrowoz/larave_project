@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('front-assets/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -154,6 +155,29 @@
 <script src="{{asset('front-assets/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('front-assets/js/jquery.nicescroll.min.js')}}"></script>
 <script src="{{asset('front-assets/js/main.js')}}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+    function addToCart(id){
+        $.ajax({
+            url:'{{route("front.addToCart")}}',
+            type:'post',
+            data:{id:id},
+            dataType:'json',
+            success:function(response){
+                if(response.status==true){
+                    window.location.href= "{{route('front.cart')}}";
+                }else{
+                    alert(response.message);
+                }
+            }
+        });
+    }
+</script>
+@yield('customJs')
 </body>
 
 </html>

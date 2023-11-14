@@ -1,19 +1,5 @@
 @extends('front.layouts.master')
 @section('main-content')
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>Shop</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
     <!-- Shop Section Begin -->
     <section class="shop spad">
         <div class="container">
@@ -66,18 +52,20 @@
                             @endphp
                         <div class="col-lg-4 col-md-6">
                             <div class="product__item">
+
                             @if(!empty($productImage->image))
                             <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/shop/shop-2.jpg')}}">
                             @else
                             <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/shop/shop-2.jpg')}}">
                             @endif
+                            </a>
                                     <ul class="product__hover">
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                        <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                        <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                <h6><a href="#">{{$product->title}}</a></h6>
+                                <h6><a href="{{route("front.product",$product->slug)}}">{{$product->title}}</a></h6>
                                  <div class="product__price">$ {{$product->price}}
                                     @if($product->compare_price > 0)
                                     <span>$ {{$product->compare_price}}</span>
@@ -87,17 +75,43 @@
                         </div>
                         @endforeach
                         @endif
-                        <div class="col-lg-12 text-center">
-                            <div class="pagination__option">
-                                <a href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
+                        <div class="col-md-12 pt-5">
+                            {{$products->links('')}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endsection
+    @section('customJs')
+    <script>
+      var slider = $('.js-range-slider');
+
+
+    slider.ionRangeSlider({
+        type:"double",
+        min:0,
+        max:200,
+        from:{{($priceMin)}},
+        step:10,
+        to:{{($priceMax)}},
+        skin:"flat",
+        max_postfix:"+",
+        prefix:"$"
+    });
+
+
+    slider.on("change", function () {
+        var $inp = $(this);
+        var from = $inp.data("from");   // get data from attribute
+        var to = $inp.data("to");       // get data from attribute
+
+        console.log(from, to); 
+        var url='{{ url()->current() }}?';
+        url +='&price_min='+$inp.data("from")+'&price_max='+$inp.data("to");
+        window.location.href=url; 
+        
+    });
+</script>
     @endsection

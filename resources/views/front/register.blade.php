@@ -1,19 +1,5 @@
 @extends('front.layouts.master')
 @section('main-content')
-    <div class="breadcrumb-option">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb__links">
-                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <span>Register</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Breadcrumb End -->
-
     <!-- Register Begin -->
     <section class="checkout spad">
         <div class="container">
@@ -56,7 +42,7 @@
                                 <div class="ccol-lg-6 col-md-6 col-sm-6">
                               <div class="checkout__form__input">
                                     <p>Phone <span>*</span></p>
-                                    <input type="number" id="phone" name="phone">
+                                    <input type="text" id="phone" name="phone">
                               </div>
                               </div>
                             </div>
@@ -71,5 +57,5 @@
                 </form>
             </div>
         </section>
-       
+        <!-- Register End -->
         @endsection

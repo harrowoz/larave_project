@@ -1,6 +1,37 @@
 @extends('front.layouts.master')
 @section('main-content')
-    <!-- Product Section Begin -->
+<!-- Categories Section Begin -->
+<section class="categories">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="categories__item categories__large__item set-bg"
+                    data-setbg="{{asset('front-assets/img/categories/category-1.jpg')}}">
+                    <div class="categories__text">
+                        <h1>Women’s fashion</h1>
+                        <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
+                        edolore magna aliquapendisse ultrices gravida.</p>
+                        <a href="./shop">Shop now</a>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="categories__item categories__large__item set-bg"
+                    data-setbg="{{asset('front-assets/img/categories/category-2.jpg')}}">
+                    <div class="categories__text">
+                        <h1>Men’s fashion</h1>
+                        <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
+                        edolore magna aliquapendisse ultrices gravida.</p>
+                        <a href="./shop">Shop now</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Categories Section End -->
+
+<!-- Product Section Begin -->
 <section class="product spad">
     <div class="container">
         <div class="row">
@@ -25,7 +56,7 @@
                             @endif
                         <ul class="product__hover">
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -72,7 +103,7 @@
                             @endif
                         <ul class="product__hover">
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                            <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
