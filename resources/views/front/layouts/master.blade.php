@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('front-assets/css/magnific-popup.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('front-assets/css/ion.rangeSlider.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -146,15 +147,16 @@
 
 <!-- Js Plugins -->
 <script src="{{asset('front-assets/js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{asset('front-assets/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('front-assets/js/jquery.magnific-popup.min.js')}}"></script>
-<script src="{{asset('front-assets/js/jquery-ui.min.js')}}"></script>
-<script src="{{asset('front-assets/js/mixitup.min.js')}}"></script>
-<script src="{{asset('front-assets/js/jquery.countdown.min.js')}}"></script>
-<script src="{{asset('front-assets/js/jquery.slicknav.js')}}"></script>
-<script src="{{asset('front-assets/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('front-assets/js/jquery.nicescroll.min.js')}}"></script>
-<script src="{{asset('front-assets/js/main.js')}}"></script>
+    <script src="{{asset('front-assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/mixitup.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/jquery.slicknav.js')}}"></script>
+    <script src="{{asset('front-assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/jquery.nicescroll.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/ion.rangeSlider.min.js')}}"></script>
+    <script src="{{asset('front-assets/js/main.js')}}"></script>
 <script type="text/javascript">
     $.ajaxSetup({
   headers: {
