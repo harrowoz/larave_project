@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\WishController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,10 @@ route::get('/wishlist',[WishController::class,'wishlist'])->name('front.wishlist
 route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
 route::get('/contact',[ContactController::class,'contact'])->name('front.contact');
 route::get('/product',[ShopController::class,'product'])->name('front.product');
-route::get('/login',[FrontController::class,'login'])->name('front.login');
-route::get('/register',[FrontController::class,'register'])->name('front.register');
+
+route::get('/login',[UserController::class,'login'])->name('login');
+route::post('/login',[UserController::class,'postLogin'])->name('postLogin');
+route::get('/register',[UserController::class,'register'])->name('register');
+Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
+route::get('/logout',[UserController::class,'logout'])->name('logout');
+
