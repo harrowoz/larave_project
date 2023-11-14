@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/ion.rangeSlider.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -70,7 +71,6 @@
                             <li><a href="{{ route("front.shop",'man')}}">man</a></li>
                             <li><a href="{{ route("front.shop",'women')}}">women</a></li>
                             <li><a href="{{ route("front.shop")}}">Shop</a></li>
-                            <li><a href="{{ route("front.contact")}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -107,7 +107,23 @@
     <!-- Shop Cart Section Begin -->
     <section class="shop-cart spad">
         <div class="container">
+            @if(Session::has('success'))
+                <div class="col-md-12">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {!!Session::get('success')!!} 
+                    </div>
+                </div>
+            @endif
+
+            @if(Session::has('error'))
+                <div class="col-md-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {!!Session::get('error')!!} 
+                    </div>
+                </div>
+            @endif   
             <div class="row">
+                @if(Cart::count()>0)
                 <div class="col-lg-12">
                     <div class="shop__cart__table">
                         <table>
@@ -121,98 +137,40 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($cartContent as $item)
                                 <tr>
-                                    <td class="cart__product__item">
+                                    <td class="cart__product__item text-start">
+                                    @if(!empty($item->options->image))
                                         <img src="{{asset('front-assets/img/shop-cart/cp-1.jpg')}}" alt="">
+                                        @else
+                                        <img src="{{asset('front-assets/img/shop-cart/cp-1.jpg')}}" alt="">
+                                        @endif
                                         <div class="cart__product__item__title">
-                                            <h6>Chain bucket bag</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
+                                            <h6>{{$item->name}}</h6>
                                         </div>
                                     </td>
-                                    <td class="cart__price">$ 150.0</td>
+                                    <td class="cart__price">${{$item->price}}</td>
                                     <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
+                                    <div style="align-items: center;display: flex;width:50%">
+                                    <div>
+                                        <button data-id="{{$item->rowId}}" class="btn btn-sm btn-dark btn-minus p-2 pt-1 pb-1 sub">
+                                        <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="form-control form-control-sm border-0 text-center" value="{{$item->qty}}">
+                                    <div>
+                                      <button data-id="{{$item->rowId}}" class="btn btn-sm btn-dark btn-minus p-2 pt-1 pb-1 add">
+                                        <i class="fa fa-plus"></i>
+                                        </button>  
+                                    </div>
+                                </div>
+
                                     </td>
-                                    <td class="cart__total">$ 300.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
+                                    <td class="cart__total">${{$item->price*$item->qty}}</td>
+                                    <td class="cart__close"><button class="btn btn-sm btn-danger" onclick="deleteItem('{{$item->rowId}}');"><i class="fa fa-times"></i></button></td>
                                 </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-2.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Zip-pockets pebbled tote briefcase</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 170.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 170.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-3.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Black jean</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 85.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 170.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-4.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Cotton Shirt</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 55.0</td>
-                                    <td class="cart__quantity">
-                                        <div class="pro-qty">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="cart__total">$ 110.0</td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
+                                @endforeach
+                                
                             </tbody>
                         </table>
                     </div>
@@ -221,35 +179,34 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="cart__btn">
-                        <a href="#">Continue Shopping</a>
+                        <a href="{{ route("front.shop")}}">Continue Shopping</a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="cart__btn update__btn">
-                        <a href="#"><span class="icon_loading"></span> Update cart</a>
-                    </div>
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="discount__content">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="submit" class="site-btn">Apply</button>
-                        </form>
-                    </div>
+                   
                 </div>
                 <div class="col-lg-4 offset-lg-2">
                     <div class="cart__total__procced">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 750.0</span></li>
-                            <li>Total <span>$ 750.0</span></li>
+                            <li>Subtotal <span>${{Cart::subtotal()}}</span></li>
+                            <li>Total <span>$ {{Cart::subtotal()}}</span></li>
                         </ul>
                         <a href="#" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
+                @else
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <h4>Your Cart is empty!</h4>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </section>
@@ -408,5 +365,60 @@
     <script src="{{asset('front-assets/js/ion.rangeSlider.min.js')}}"></script>
     <script src="{{asset('front-assets/js/main.js')}}"></script>
 </body>
+<script>
+     $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$('.add').click(function(){
+      var qtyElement = $(this).parent().prev(); // Qty Input
+      var qtyValue = parseInt(qtyElement.val());
+      if (qtyValue < 10) {
+        qtyElement.val(qtyValue+1);
+        var rowId = $(this).data('id');
+        var newQty = qtyElement.val(); 
+        updateCart(rowId,newQty)
+      }            
+  });
 
+  $('.sub').click(function(){
+      var qtyElement = $(this).parent().next(); 
+      var qtyValue = parseInt(qtyElement.val());
+      if (qtyValue > 1) {
+          qtyElement.val(qtyValue-1);
+          var rowId=$(this).data('id');
+          var newQty=qtyElement.val(); 
+          updateCart(rowId,newQty)
+      }        
+  });
+
+  function updateCart(rowId,qty){
+    $.ajax({
+        url:'{{route("front.updateCart")}}',
+        type:'post',
+        data:{rowId:rowId,qty:qty},
+        datatype:'json',
+        success:function(response){
+                window.location.href='{{route("front.cart")}}';
+        }
+    });
+  }
+
+  function deleteItem(rowId){
+    if(confirm("Are you sure you want to delete?")){
+    $.ajax({
+            url:'{{route("front.deleteItem.cart")}}',
+            type:'post',
+            data:{rowId:rowId},
+            datatype:'json',
+            success:function(response){
+                if(response.status==true){
+                    window.location.href='{{route("front.cart")}}';
+                }
+            }
+        });
+    }
+  }
+</script>
 </html>

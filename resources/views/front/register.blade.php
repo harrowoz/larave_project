@@ -70,7 +70,6 @@
                             <li><a href="{{ route("front.shop",'man')}}">man</a></li>
                             <li><a href="{{ route("front.shop",'women')}}">women</a></li>
                             <li><a href="{{ route("front.shop")}}">Shop</a></li>
-                            <li><a href="{{ route("front.contact")}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->double('price',10,2);
             $table->double('compare_price',10,2)->nullable();
             $table->foreignId('category_id')->constrained(table: 'categories', indexName: 'id')->onDelete('cascade');
+            $table->enum('track_qty',['yes','no'])->default('no');
+            $table->integer('qty');
             $table->enum('is_featured',['yes','no'])->default('no');
             $table->integer('status')->default(1); 
             $table->timestamps();

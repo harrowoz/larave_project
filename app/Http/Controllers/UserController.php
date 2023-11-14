@@ -22,7 +22,6 @@ class UserController extends Controller
         try {
             User::create($request->all());
         } catch (\Throwable $th) {
-            dd($th);
         }
         return redirect()->route('front.login');
 

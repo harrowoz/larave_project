@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{asset('front-assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/ion.rangeSlider.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('front-assets/css/style.css')}}" type="text/css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -71,7 +72,6 @@
                             <li><a href="{{ route("front.shop",'man')}}">man</a></li>
                             <li><a href="{{ route("front.shop",'women')}}">women</a></li>
                             <li><a href="{{ route("front.shop")}}">Shop</a></li>
-                            <li><a href="{{ route("front.contact")}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -133,12 +133,13 @@
                         magni lores eos qui ratione voluptatem sequi nesciunt.</p>
                         <div class="product__details__button">
                             <div class="quantity">
-                                <span>Quantity:</span>
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
+                                <span>Quantity: {{$product->qty}}</span>
                             </div>
-                            <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            @if($product->qty==0)
+                            <a href="#"  class="cart-btn" aria-disabled="true"><span class="icon_bag_alt"></span> Out of stock</a>
+                            @else
+                            <a href="javascript:void(0);" onclick="addToCart({{$product->id}});" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+                            @endif
                             <ul>
                                 <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             </ul>
@@ -351,5 +352,26 @@
     <script src="{{asset('front-assets/js/ion.rangeSlider.min.js')}}"></script>
     <script src="{{asset('front-assets/js/main.js')}}"></script>
 </body>
-
+<script type="text/javascript">
+    $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+    function addToCart(id){
+        $.ajax({
+            url:'{{route("front.addToCart")}}',
+            type:'post',
+            data:{id:id},
+            dataType:'json',
+            success:function(response){
+                if(response.status==true){
+                    window.location.href= "{{route('front.cart')}}";
+                }else{
+                    alert(response.message);
+                }
+            }
+        });
+    }
+</script>
 </html>
