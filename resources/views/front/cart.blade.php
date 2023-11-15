@@ -1,4 +1,3 @@
-
 @extends('front.layouts.master')
 @section('main-content')
 <!-- Shop Cart Section Begin -->
@@ -8,6 +7,9 @@
                 <div class="col-md-12">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {!!Session::get('success')!!} 
+                        </div>
+                </div>
+             @endif           
             @if(Session::has('error'))
                 <div class="col-md-12">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -92,7 +94,7 @@
                             <li>Subtotal <span>${{Cart::subtotal()}}</span></li>
                             <li>Total <span>$ {{Cart::subtotal()}}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Proceed to checkout</a>
+                        <a href="{{ route("front.checkout")}}" class="primary-btn">Proceed to checkout</a>
                     </div>
                 </div>
                 @else
@@ -108,10 +110,9 @@
         </div>
     </section>
     <!-- Shop Cart Section End -->
-    @endsection
-    @section('customJs')
-    <script>
-        
+@endsection
+@section('customJs')
+    <script> 
 $('.add').click(function(){
       var qtyElement = $(this).parent().prev(); // Qty Input
       var qtyValue = parseInt(qtyElement.val());
@@ -160,5 +161,5 @@ $('.add').click(function(){
     }
   }
 </script>
-    @endsection
+ @endsection
 
