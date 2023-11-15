@@ -20,7 +20,7 @@
         <div class="offcanvas__auth">
         @if(Auth::check())
             <a href="./">{{Auth::user()->name}}</a>
-            <a href="./">Logout</a>
+            <a href="{{route("logout")}}">Logout</a>
         @else
         <a href="{{route("front.login")}}">Login</a>
                             <a href="{{route("front.register")}}">Register</a>
@@ -53,7 +53,7 @@
                         <div class="header__right__auth">
                             @if(Auth::check())
                             <a href="./">{{Auth::user()->name}}</a>
-                            <a href="{{route("front.login")}}">Logout</a>
+                            <a href="{{route("logout")}}">Logout</a>
                         @else
                             <a href="{{route("front.login")}}">Login</a>
                             <a href="{{route("front.register")}}">Register</a>

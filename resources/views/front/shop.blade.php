@@ -55,7 +55,7 @@
                             @endif
                             </a>
                                     <ul class="product__hover">
-                                        <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                                        <li><a href="javascript:void(0);" onclick="addToWishlist({{ $product->id }});"><span class="fa fa-heart"></span></a></li>
                                         <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                                     </ul>
                                 </div>
@@ -110,5 +110,6 @@
         
     });
 </script>
+
     @endsection
 
