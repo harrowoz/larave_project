@@ -31,75 +31,34 @@
                                     <th></th>
                                 </tr>
                             </thead>
+                            <div class="col-md-12">
+                            @include('front.layouts.message')
+                        </div>
                             <tbody>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-1.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Chain bucket bag</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                @if($wishlists->isNotEmpty())
+                                    @foreach($wishlists as $wishlist )
+                                    <tr>
+                                        <td class="cart__product__item">
+                                          <a href="{{route("front.shop")}}">  <img  src="{{asset('front-assets/img/shop-cart/cp-2.jpg')}}" alt="">
+                                            <div class="cart__product__item__title">
+                                                <h6>{{$wishlist->product->title}}</h6>
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 150.0 <del>$ 200.0</del></td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-2.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Zip-pockets pebbled tote briefcase</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 170.0 <del>$ 250.0</del></td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-3.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Black jean</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 85.0 <del>$ 150.0</del></td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart__product__item">
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-4.jpg')}}" alt="">
-                                        <div class="cart__product__item__title">
-                                            <h6>Cotton Shirt</h6>
-                                            <div class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart__price">$ 55.0 <del>$ 100.0</del></td>
-                                    <td class="cart__close"><span class="icon_close"></span></td>
-                                </tr>
+                                        </a>
+                                        </td>
+                                        <td class="cart__price">{{$wishlist->product->price}} <del>{{$wishlist->product->compare_price}}</del></td>
+                                        <td class="cart__close">
+                                            <button class="icon_close" onclick="removeProduct({{$wishlist->product_id}})"></button></td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+
                             </tbody>
                         </table>
                     </div>
@@ -108,4 +67,20 @@
     </section>
 
     @endsection
-
+@section('customJs')
+    <script>
+        function removeProduct(id){
+            $.ajax({
+            url:'{{route("front.removeProductFromWishlist")}}',
+            type:'post',
+            data:{id:id},
+            dataType:'json',
+            success:function(response){
+                if (response.status ==true){
+                    window.location.href="{{route('front.wishlist')}}"
+                }
+            }
+        });
+        }
+    </script>
+@endsection

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Auth;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -39,5 +40,26 @@ class UserController extends Controller
     {
         Auth::logout();
       return redirect()->back();
+    }
+    public function wishlist(){
+        $wishlists = Wishlist::where('user_id',Auth::user()->id)->with('product')->get();
+        $data=[];
+        $data['wishlists']= $wishlists;
+        return view('front.wishlist',$data);
+    }
+    public function removeProductFromWishlist(Request $request){
+        $wishlist = Wishlist::where('user_id',Auth::user()->id)->where('product_id',$request->id)->first();
+        if($wishlist == null){
+            session()->flash('error','Product already removed');
+            return response()->json([
+                'status'=>true,
+            ]);
+        } else{
+            Wishlist::where('user_id',Auth::user()->id)->where('product_id',$request->id)->delete();
+            session()->flash('success','Product removed succesfully.');
+            return response()->json([
+                'status'=>true,
+            ]);
+        }
     }
 }
