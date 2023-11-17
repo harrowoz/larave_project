@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\CustomerAddress;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 class CartController extends Controller
 {
     
@@ -121,5 +125,77 @@ class CartController extends Controller
         session()->forget('url.intended');
         return view('front.checkout');
     }       
-      
+      public function processCheckOut( Request $request) {
+        $validator = Validator::make($request->all(),[
+            'first_name'=> 'required',
+            'last_name'=> 'required',
+            'address'=> 'required|min:15',
+            'phone'=> 'required',
+            'email'=> 'required|email'
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'message'=> 'Please fix the errors',
+             'status'=>false,
+               'errors'=>$validator->errors()
+
+            ]);
+        }
+        $user = Auth::user();
+        CustomerAddress::updateOrCreate(
+            ['user_id'=>$user->id],
+            [
+                'user_id'=>$user->id,
+                'first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'address'=>$request->address,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'note'=>$request->note,
+            ],
+        );
+        if($request->payment_method=='cod'){
+            $shipping = 0;
+            $subTotal = Cart::subtotal(2,'.','');
+            $grandTotal = $subTotal + $shipping;
+            $order = new Order;
+            $order->subtotal = $subTotal;
+            $order->shipping = $shipping;
+            $order->grand_total = $grandTotal; 
+
+            $order->user_id = $user->id;
+            $order->first_name = $request->first_name;
+            $order->last_name = $request->last_name;
+            $order->address = $request->address;
+            $order->phone = $request->phone;
+            $order->email = $request->email;
+            $order->note = $request->note;
+            $order->save();
+
+            foreach (Cart::content() as $key => $item){
+                $orderDetail = new OrderDetail;
+                $orderDetail-> product_id =$item->id;
+                $orderDetail-> order_id =$order->id;
+                $orderDetail-> name =$item->name;
+                $orderDetail-> qty =$item->qty;
+                $orderDetail-> price =$item->price;
+                $orderDetail-> total =$item->price*$item->qty;
+                $orderDetail->save();
+            }
+            session()->flash('success','You have successfully placed your order!');
+            // Thanh toán xong tự động xóa khỏi giỏ hàng
+            Cart::destroy(); 
+            
+            return response()->json([
+                'message'=> 'Order save successfully!',
+                'orderId'=>$order->id,
+             'status'=>true
+            ]);
+        } else{
+
+        }
+      }
+      public function thankyou() {
+        return view('front.thanks');
+      }
 }

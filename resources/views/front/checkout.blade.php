@@ -8,7 +8,7 @@
             <div class="row">
                 
             </div>
-            <form action="#" class="checkout__form">
+            <form action="#" class="checkout__form" id="checkout__form" method="POST">
                 <div class="row">
                     <div class="col-lg-8">
                         <h5>Billing detail</h5>
@@ -16,45 +16,50 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>First Name <span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name="first_name" id="first_name">
+                                    <strong></strong>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Last Name <span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name="last_name" id="last_name">
+                                    <strong></strong>
                                 </div>
                             </div>
                             <div class="col-lg-12">
 
                                 <div class="checkout__form__input">
                                     <p>Address <span>*</span></p>
-                                    <input type="text" placeholder="Street Address">
+                                    <input type="text" placeholder="Street Address" name="address" id="address">
+                                    <strong></strong>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Phone <span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" name="phone" id="phone">
+                                    <strong></strong>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Email <span>*</span></p>
-                                    <input type="text">
+                                    <input type="email" name="email" id="email">
+                                    <strong></strong>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                     <div class="checkout__form__checkbox">
                                         <label for="note">
                                             Note about your order, e.g, special noe for delivery
-                                            <input type="checkbox" id="note">
+                                            <input type="checkbox" id="notes" name="notes">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div class="checkout__form__input">
                                         <p>Oder notes <span>*</span></p>
-                                        <input type="text"
+                                        <input type="text" name="note" id="note"
                                         placeholder="Note about your order, e.g, special noe for delivery">
                                     </div>
                                 </div>
@@ -115,6 +120,79 @@
             if($(this).is(":checked")==true){
                 $('#card-payment-form').removeClass('d-none');
             }
+        });
+        $("#checkout__form").submit(function(event){
+            event.preventDefault();
+            $.ajax({
+                url: '{{ route("front.processCheckOut") }}',
+                type:'post',
+                data: $(this).serializeArray(),
+                dataType:'json',
+                success:function(response){
+                    var errors = response.errors;
+
+                if(response.status == false){
+                    if(errors.first_name){
+                        $("#first_name").addClass('is-invalid')
+                        .siblings("strong")
+                        .addClass('invalid-feedback')
+                        .html(errors.first_name);
+                    }   else{
+                        $("#first_name").removeClass('is-invalid')
+                        .siblings("strong")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                    }
+                    
+                    if(errors.last_name){
+                        $("#last_name").addClass('is-invalid')
+                        .siblings("strong")
+                        .addClass('invalid-feedback')
+                        .html(errors.last_name);
+                    }   else{
+                        $("#last_name").removeClass('is-invalid')
+                        .siblings("strong")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                    }
+                    if(errors.address){
+                        $("#address").addClass('is-invalid')
+                        .siblings("strong")
+                        .addClass('invalid-feedback')
+                        .html(errors.address);
+                    }   else{
+                        $("#address").removeClass('is-invalid')
+                        .siblings("strong")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                    }
+                    if(errors.phone){
+                        $("#phone").addClass('is-invalid')
+                        .siblings("strong")
+                        .addClass('invalid-feedback')
+                        .html(errors.phone);
+                    }   else{
+                        $("#phone").removeClass('is-invalid')
+                        .siblings("strong")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                    }
+                    if(errors.email){
+                        $("#email").addClass('is-invalid')
+                        .siblings("strong")
+                        .addClass('invalid-feedback')
+                        .html(errors.email);
+                    }   else{
+                        $("#email").removeClass('is-invalid')
+                        .siblings("strong")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                    }
+                } else{
+                    window.location.href="{{url('thanks/')}}/"+response.orderId;
+                }
+            }
+            });
         });
     </script>
     @endsection

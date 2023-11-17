@@ -1,10 +1,9 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Category;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,6 +17,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        \App\Models\Product::factory(30)->create();
+        \App\Models\Category::factory(6)->create();
+        \App\Models\Product::factory(18)->create();
     }
 }

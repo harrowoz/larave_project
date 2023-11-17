@@ -52,20 +52,20 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
                 @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-1.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
                             @else
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-1.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
                             @endif
                         <ul class="product__hover">
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="javascript:void(0);" onclick="addToWishlist({{ $product->id }});"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">{{$product->title}}</a></h6>
-                        <div class="product__price">$ {{$product->price}}
+                        <div class="product__price">$ {{$product->compare_price}}
                             @if($product->compare_price > 0)
-                            <span>$ {{$product->compare_price}}</span>
+                            <span>$ {{$product->price}}</span>
                             @endif</div>
                     </div>
                 </div>
@@ -99,20 +99,20 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
                 @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-1.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
                             @else
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-1.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
                             @endif
                         <ul class="product__hover">
-                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="javascript:void(0);" onclick="addToWishlist({{ $product->id }});"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
                         <h6><a href="#">{{$product->title}}</a></h6>
-                        <div class="product__price">$ {{$product->price}}
+                        <div class="product__price">$ {{$product->compare_price}}
                             @if($product->compare_price > 0)
-                            <span>$ {{$product->compare_price}}</span>
+                            <span>$ {{$product->price}}</span>
                             @endif</div>
                     </div>
                 </div>

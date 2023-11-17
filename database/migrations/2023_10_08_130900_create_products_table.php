@@ -14,14 +14,16 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
-            $table->enum('gender',['male','female']);
-            $table->string('description')->nullable();
+            $table->enum('gender',['man','women']);
+            $table->string('slug')->unique();
+            $table->string('sort_description')->nullable();
+            $table->text('description')->nullable();
+            $table->text('image');
             $table->double('price',10,2);
             $table->double('compare_price',10,2)->nullable();
             $table->foreignId('category_id')->constrained(table: 'categories', indexName: 'id')->onDelete('cascade');
             $table->enum('track_qty',['yes','no'])->default('no');
-            $table->integer('qty');
+            $table->integer('qty')->default(1);
             $table->enum('is_featured',['yes','no'])->default('no');
             $table->integer('status')->default(1); 
             $table->timestamps();
