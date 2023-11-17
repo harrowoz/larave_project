@@ -35,10 +35,8 @@
                                 @foreach ($cartContent as $item)
                                 <tr>
                                     <td class="cart__product__item text-start">
-                                    @if(!empty($item->options->image))
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-1.jpg')}}" alt="">
-                                        @else
-                                        <img src="{{asset('front-assets/img/shop-cart/cp-1.jpg')}}" alt="">
+                                    @if(!empty($item->options->productImage->image))
+                                        <img src="{{asset('front-assets/img/product/'.$item->options->productImage->image)}}" alt="">
                                         @endif
                                         <div class="cart__product__item__title">
                                             <h6>{{$item->name}}</h6>

@@ -13,7 +13,7 @@
                             <div class="product__details__pic__slider owl-carousel ">
                             @if($product->product_images)
                             @foreach($product->product_images as $key =>$productImages)
-                                <img data-hash="product-1" class="product__big__img {{ ($key==0)? 'active':''}}" src="{{asset('front-assets/img/product/details/product-1.jpg')}}" alt="">
+                                <img data-hash="product-1" class="product__big__img {{ ($key==0)? 'active':''}}" src="{{asset('front-assets/img/product/'.$productImage->image)}}" alt="">
                                 @endforeach
                             @endif
                             </div>
@@ -41,7 +41,7 @@
                             <a href="javascript:void(0);" onclick="addToCart({{$product->id}});" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
                             @endif
                             <ul>
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="javascript:void(0);" onclick="addToWishlist({{ $product->id }});"><span class="icon_heart_alt"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -75,22 +75,23 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
                     @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/shop/shop-2.jpg')}}">
-                            @else
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/shop/shop-2.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
+                            @endif
+                            @if($rproduct->qty==0)
+                            <div class="label stockout">out of stock</div>
                             @endif
                             <ul class="product__hover">
-                                <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="javascript:void(0);" onclick="addToWishlist({{ $rproduct->id }});"><span class="icon_heart_alt"></span></a></li>
 
-                                <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
+                                <li><a href="javascript:void(0);" onclick="addToCart({{$rproduct->id}});"><span class="icon_bag_alt"></span></a></li>
 
                             </ul>
                         </div>
                         <div class="product__item__text">
                             <h6><a href="{{route("front.product",$rproduct->slug)}}">{{$rproduct->title}}</a></h6>
                             <div class="product__price">$ {{$rproduct->price}}
-                                    @if($rproduct->compare_price > 0)
-                                    <span>$ {{$rproduct->compare_price}}</span>
+                            @if($rproduct->compare_price > 0)
+                            <span>$ {{$rproduct->compare_price}}</span>
                                     @endif</div>
                         </div>
                     </div>

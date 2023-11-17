@@ -49,11 +49,11 @@
                             <div class="product__item">
 
                             @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
-                            @else
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
                             @endif
-                            </a>
+                            @if($product->qty==0)
+                            <div class="label stockout">out of stock</div>
+                            @endif
                                     <ul class="product__hover">
                                         <li><a href="javascript:void(0);" onclick="addToWishlist({{ $product->id }});"><span class="fa fa-heart"></span></a></li>
                                         <li><a href="javascript:void(0);" onclick="addToCart({{$product->id}});"><span class="icon_bag_alt"></span></a></li>
@@ -61,9 +61,9 @@
                                 </div>
                                 <div class="product__item__text">
                                 <h6><a href="{{route("front.product",$product->slug)}}">{{$product->title}}</a></h6>
-                                 <div class="product__price">$ {{$product->compare_price}}
-                                    @if($product->compare_price > 0)
-                                    <span>$ {{$product->price}}</span>
+                                <div class="product__price">$ {{$product->price}}
+                            @if($product->compare_price > 0)
+                            <span>$ {{$product->compare_price}}</span>
                                     @endif</div>
                                 </div>
                             </div>
