@@ -36,7 +36,7 @@
                                 <tr>
                                     <td class="cart__product__item text-start">
                                     @if(!empty($item->options->productImage->image))
-                                        <img src="{{asset('front-assets/img/product/'.$item->options->productImage->image)}}" alt="">
+                                        <img style="height: 90px;width: 90px;" src="{{asset('front-assets/img/product/'.$item->options->productImage->image)}}" alt="">
                                         @endif
                                         <div class="cart__product__item__title">
                                             <h6>{{$item->name}}</h6>

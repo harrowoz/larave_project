@@ -13,7 +13,7 @@
                             <div class="product__details__pic__slider owl-carousel ">
                             @if($product->product_images)
                             @foreach($product->product_images as $key =>$productImages)
-                                <img data-hash="product-1" class="product__big__img {{ ($key==0)? 'active':''}}" src="{{asset('front-assets/img/product/'.$productImage->image)}}" alt="">
+                                <img style="height: 546px;width: 410px;" class="product__big__img {{ ($key==0)? 'active':''}}" src="{{asset('front-assets/img/product/'.$productImage->image)}}" alt="">
                                 @endforeach
                             @endif
                             </div>
@@ -75,7 +75,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="product__item">
                     @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
+                            <div style="height: 360px;width: 270px;" class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
                             @endif
                             @if($rproduct->qty==0)
                             <div class="label stockout">out of stock</div>

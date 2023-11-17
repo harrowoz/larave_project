@@ -25,7 +25,7 @@
                                     @foreach($wishlists as $wishlist )
                                     <tr>
                                         <td class="cart__product__item">
-                                          <a href="">  <img style="width:10%;" src="{{asset('front-assets/img/product/'.$wishlist->product->image)}}" alt="">
+                                          <a href="">  <img style="height: 90px;width: 90px;" src="{{asset('front-assets/img/product/'.$wishlist->product->image)}}" alt="">
                                             <div class="cart__product__item__title">
                                                 <h6>{{$wishlist->product->title}}</h6>
                                             </div>

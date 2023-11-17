@@ -52,7 +52,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
                 @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
+                            <div style="height: 360px;width: 270px;"class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
                             @endif
                             @if($product->qty==0)
                             <div class="label stockout">out of stock</div>
@@ -100,7 +100,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="product__item">
                 @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
+                            <div style="height: 360px;width: 270px;" class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/'.$productImage->image)}}">
                             @endif
                             @if($product->qty==0)
                             <div class="label stockout">out of stock</div>
