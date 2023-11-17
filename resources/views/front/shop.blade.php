@@ -49,9 +49,9 @@
                             <div class="product__item">
 
                             @if(!empty($productImage->image))
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/shop/shop-2.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
                             @else
-                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/shop/shop-2.jpg')}}">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('front-assets/img/product/product-').$product->image}}">
                             @endif
                             </a>
                                     <ul class="product__hover">
@@ -61,9 +61,9 @@
                                 </div>
                                 <div class="product__item__text">
                                 <h6><a href="{{route("front.product",$product->slug)}}">{{$product->title}}</a></h6>
-                                 <div class="product__price">$ {{$product->price}}
+                                 <div class="product__price">$ {{$product->compare_price}}
                                     @if($product->compare_price > 0)
-                                    <span>$ {{$product->compare_price}}</span>
+                                    <span>$ {{$product->price}}</span>
                                     @endif</div>
                                 </div>
                             </div>
